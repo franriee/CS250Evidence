@@ -1,0 +1,22 @@
+class Solution {
+    public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+    int maxCandies = 0; // Firstly, initialize the maximum storage variable to 0            
+
+    for (int candy : candies) { //  an enhanced for loop to got through the list of ints of candies to find the largest 
+        maxCandies = Math.max(maxCandies, candy);
+    }
+
+    // Create a result list filled with items in it so that the list initialises to no kid having the maximum amount of candied
+    // how to use collections.nCopies when setting the array list with content instead of using a loop from:
+    // https://www.geeksforgeeks.org/collections-ncopies-java/
+    List<Boolean> result = new ArrayList<>(Collections.nCopies(candies.length, false));
+    
+    // A for loop that checks if each kid will have the greatest number after extra candies
+    // At the same time it sets true or false if the sum after extra candies added matches or is greater than max + extra candies
+    for (int i = 0; i < candies.length; i++) {
+        result.set(i, candies[i] + extraCandies >= maxCandies);
+    }
+    return result;
+    }
+}
+
