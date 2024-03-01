@@ -1,1 +1,12 @@
-
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        int i = 0, j = 0;
+        while (i < s.length() && j < t.length()) {
+            if (s.charAt(i) == t.charAt(j)) {
+                i++; // Move pointer for s if characters match
+            }
+            j++; // Always move pointer for t
+        }
+        return i == s.length(); // Check if all characters in s were found
+    }
+}
