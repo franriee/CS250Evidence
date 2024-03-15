@@ -1,0 +1,17 @@
+# Write your MySQL query statement below
+SELECT Product.product_name, Sales.year, Sales.price
+FROM Sales LEFT JOIN Product 
+ON Sales.product_id=Product.product_id;
+
+# Write your MySQL query statement below
+SELECT Visits.customer_id, Transactions.visit_id 
+AS count_no_trans
+FROM Visits LEFT JOIN Transactions
+WHERE Transactions.transaction_id > 0 
+ON Visits.customer_id=Transactions.visit_id;
+
+# Write your MySQL query statement below
+SELECT t1.id
+FROM Weather  t1
+JOIN Weather  t2 ON t1.recordDate = DATE_ADD(t2.recordDate, INTERVAL 1 DAY)
+WHERE t1.temperature > t2.temperature;
