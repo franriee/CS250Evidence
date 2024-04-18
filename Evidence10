@@ -1,0 +1,73 @@
+class RecentCounter {
+    private Queue<Integer> requests;
+
+    public RecentCounter() {
+        this.requests = new LinkedList<>();
+        
+    }
+    
+    public int ping(int t) {
+        requests.add(t);
+        while(requests.peek() < t - 3000){
+            requests.poll();
+        }
+        return requests.size();
+    }
+}
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * RecentCounter obj = new RecentCounter();
+ * int param_1 = obj.ping(t);
+ */
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteMiddle(ListNode head) {
+       ListNode h1 = head;
+        ListNode h2 = head;
+        if(h2.next ==null) return null;
+
+        while(h2.next.next!=null && h2.next.next.next!=null){
+            h1 = h1.next;
+            h2 = h2.next.next;
+        }
+        h1.next = h1.next.next;
+        return head;
+
+        
+    }
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode curr=head;
+        ListNode prev=null;
+
+        while(curr!=null){
+            ListNode Next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=Next;
+        }
+        return prev;
+    }
+}
